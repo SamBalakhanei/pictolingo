@@ -96,34 +96,49 @@ function handleSubmitDeck(e) {
 }
 
 function compileSubmitDeck(deck) {
+  // Create a list of promises to track the async operations
+  const promises = [];
+
   deck.cards.forEach((card, index) => {
-    //Select images1/2 to upload to imgbb
     let image1 = document.getElementById(`image1-${index}`);
     let image2 = document.getElementById(`image2-${index}`);
-    if (image1.files.length > 0 && image2.files.length > 0) {
-      const reader1 = new FileReader();
-      reader1.onload = async function () {
-        const imageData1 = reader1.result.split(',')[1];
-        let temp1 = await uploadImage(imageData1, index);
-        card.img1 = temp1
 
-        const reader2 = new FileReader();
-        reader2.onload = async function () {
-          const imageData2 = reader2.result.split(',')[1];
-          let temp2 = await uploadImage(imageData2, index);
-          card.img2 = temp2
+    if (image1.files.length > 0 && image2.files.length > 0) {
+      const promise = new Promise((resolve) => {
+        const reader1 = new FileReader();
+        reader1.onload = async function () {
+          const imageData1 = reader1.result.split(',')[1];
+          let temp1 = await uploadImage(imageData1, index);
+          card.img1 = temp1;
+
+          const reader2 = new FileReader();
+          reader2.onload = async function () {
+            const imageData2 = reader2.result.split(',')[1];
+            let temp2 = await uploadImage(imageData2, index);
+            card.img2 = temp2;
+            resolve(); // Resolve this promise after both images are uploaded
+          };
+
+          // Read and process the second image
+          reader2.readAsDataURL(image2.files[0]);
         };
 
-        // Read and process the second image
-        reader2.readAsDataURL(image2.files[0]);
-      };
+        // Read and process the first image
+        reader1.readAsDataURL(image1.files[0]);
+      });
 
-      // Read and process the first image
-      reader1.readAsDataURL(image1.files[0]);
+      promises.push(promise);
     }
-
   });
-  console.log(deck.cards)
-  console.log(deck);
-  insertDeck(deck);
+
+  //  create a promise chain
+  async function chainPromises() {
+    await Promise.all(promises); // Wait for all the image uploading promises to complete
+    console.log(deck.cards);
+    insertDeck(deck);
+  }
+
+  // Call the hi function to start the promise chain
+  chainPromises();
 }
+
