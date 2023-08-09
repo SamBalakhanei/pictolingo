@@ -40,7 +40,7 @@ export default function Card(deck) {
   function answerWrong(){
     setWrong([...wrong, deck.cards[index]])
     updateCard()
-
+    
   }
   
   function skipCard(){
@@ -52,12 +52,13 @@ export default function Card(deck) {
   function answerCorrect(){
     setCorrect([...correct, deck.cards[index]])
     updateCard()
+    
   }
 
-  function showResults(){ //how do i clear screen and render something new? do i just return ( <Results /> ) or something?
+  function showResults(){ 
     console.log("Total Correct : " + correct.length)
     console.log("Total Incorrect: " + wrong.length)
-    console.log("Final Score: " + correct/total)
+    console.log("Final Score: " + correct.length/total)
   }
 
   function updateCard(){
@@ -65,7 +66,7 @@ export default function Card(deck) {
       showResults()
     } else {
       setIndex(index+1);
-      setImage(deck.cards[index].img1)
+      setImage(deck.cards[index+1].img1)
     }
   }
 
