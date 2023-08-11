@@ -15,7 +15,7 @@ export default function Navbar() {
             <Link href='/learn' className="w3-bar-item w3-button">Learn</Link>
             <Link href='/' className="w3-bar-item w3-button">Study</Link>
             <Link href='/' className="w3-bar-item w3-button">Test</Link>
-            <Link href='/' className="w3-bar-item w3-button">Login</Link>
+            <Link href='/login' className="w3-bar-item w3-button">Login</Link>
             </div>
           </div>
         </div>
