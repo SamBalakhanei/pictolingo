@@ -1,8 +1,17 @@
 import Navbar from "../components/Navbar.jsx";
 import LanguageBar from "./components/LanguageBar.jsx";
 import Link from "next/link.js";
+import {redirect} from "next/navigation"
+import { getServerSession } from "next-auth";
+import { authConfig } from "../../lib/auth";
 
-export default function LearnPage() {
+export default async function LearnPage() {
+
+  const session = await getServerSession(authConfig);
+
+  if(!session){
+    redirect('/login')
+  }
   
 
   return (

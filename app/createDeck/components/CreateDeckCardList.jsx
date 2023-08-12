@@ -2,9 +2,8 @@
 import { useState } from "react";
 import { getLanguage } from "./LanguageBar";
 import { v4 } from "uuid";
-import { uploadImage } from "../page";
+import { uploadImage, getUserEmail } from "../page";
 import { insertDeck } from "/app/api/MongooseActions";
-import { checkUser } from "../page";
 
 
 
@@ -14,7 +13,6 @@ export default function CardList() {
   
   [cards, setCards] = useState([{ img1: null, img2: null }]);
 
-  
 
   function deleteCard(index) {
     const updatedCards = [...cards];
@@ -82,15 +80,13 @@ export default function CardList() {
   );
 }
 
-// export function getCards() {
-//   return cards;
-// }
+
 
 function handleSubmitDeck(e) {
   e.preventDefault();
   const deckName = document.querySelector('input[name="deckName"]').value;
   if (deckName === "" || cards.length === 0) return;
-  if(checkUser === false) return; //this does not prevent user from creating a deck
+
 
 
   let deck = {
@@ -98,10 +94,16 @@ function handleSubmitDeck(e) {
     title: deckName,
     cards: cards,
     language: getLanguage(),
-    user: null //need to put user email here or generate a user id ?
+    user: null,
   };
 
-  compileSubmitDeck(deck);
+  getUserEmail().then((res) => {
+    deck.user = res;
+    compileSubmitDeck(deck)
+  })
+  
+
+
 }
 
 function compileSubmitDeck(deck) {
@@ -143,9 +145,10 @@ function compileSubmitDeck(deck) {
   //  create a promise chain
   async function chainPromises() {
     await Promise.all(promises); // Wait for all the image uploading promises to complete
+    console.log(deck)
     insertDeck(deck);
   }
 
-  // Call the hi function to start the promise chain
+  // Call the function to start the promise chain
   chainPromises();
 }

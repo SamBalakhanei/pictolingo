@@ -25,8 +25,8 @@ export async function insertDeck(deckAdd) {
   console.log("Deck successfully added with id: " + newDeck.deck.id)
 }
 
-export async function getDecks(currLanguage){
-    const decks = await allDecks.find({ language : currLanguage })
+export async function getDecks(currLanguage,email){
+    const decks = await allDecks.find({ language : currLanguage, 'deck.user':email })
 
     return decks;
 }

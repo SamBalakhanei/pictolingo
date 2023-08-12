@@ -9,11 +9,17 @@ const imgbbUploader = require("imgbb-uploader");
 import dotenv from 'dotenv'
 import { getServerSession } from "next-auth";
 import { authConfig } from "../../lib/auth";
+import {redirect} from "next/navigation"
 dotenv.config();
 
 
 
 export default async function createDeck() {
+  const session = await getServerSession(authConfig);
+
+  if(!session){
+    redirect('/login')
+  }
 
   
   return (
@@ -52,12 +58,7 @@ export async function uploadImage(image,index){
   }
 }
 
-export async function checkUser(){
-  const session = await getServerSession(authConfig)
-  if(session){
-    return true;
-  } else {
-    return false;
-  }
+export async function getUserEmail(){
+  const session = await getServerSession(authConfig);
+  return session?.user?.email;
 }
-

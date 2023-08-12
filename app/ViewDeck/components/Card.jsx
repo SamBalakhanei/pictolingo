@@ -147,8 +147,9 @@ export default function Card(deck) {
       <>
         <div style={{ marginTop: "10px" }}>
           <h1>Total Correct: {correct.length}</h1>
-          <h1>Total Incorrect: {wrong.length}<Link className='w3-button' href={`/ViewDeck/${deck.id}/incorrect`}>View Incorrect</Link></h1>
+          <h1>Total Incorrect: {wrong.length}</h1>
           <h1>Final Score: {(correct.length / total) * 100}%</h1>
+          {/* <Link className='w3-button' href={`/ViewDeck/${deck.id}/incorrect`}>View Incorrect</Link> */}
         </div>
       </>
     );

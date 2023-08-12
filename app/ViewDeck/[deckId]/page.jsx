@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from "react";
-import Navbar from "app/components/Navbar";
 import Card from "app/ViewDeck/components/Card";
 import { getOneDeck } from "app/api/MongooseActions";
+import Link from "next/link";
 
 export default function ViewDeck({params}) { 
 
@@ -43,7 +43,26 @@ export default function ViewDeck({params}) {
 
   return (
     <>
-      <Navbar />
+    <>
+        <link
+          rel="stylesheet"
+          href="https://www.w3schools.com/w3css/4/w3.css"
+        ></link>
+  
+        <div className="w3-top">
+          <div className="w3-bar w3-white w3-wide w3-padding w3-card ">
+            <Link href='/' className="w3-bar-item w3-button"><b>Picto</b>Lingo</Link>
+            <div className="w3-right w3-hide-small">
+            <Link href='/learn' className="w3-bar-item w3-button">Learn</Link>
+            {/* <Link href='/' className="w3-bar-item w3-button">Study</Link>
+            <Link href='/' className="w3-bar-item w3-button">Test</Link> */}
+            <Link href='/api/auth/signout' className="w3-bar-item w3-button ring-2 ring-offset-blue-300">Sign Out</Link>
+            </div>
+          </div>
+        </div>
+      </>
+
+      
       <div className="w3-content w3-padding" style={{ maxWidth: "1564px" }}>
         <div
           className="position"
