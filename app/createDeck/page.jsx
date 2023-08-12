@@ -2,16 +2,20 @@
 import Navbar from "../components/Navbar";
 import LanguageBar from "app/createDeck/components/LanguageBar";
 import CardList from "./components/CreateDeckCardList";
-import { insertDeck } from "../api/MongooseActions";
 import { v4 } from "uuid";
 const imgbbUploader = require("imgbb-uploader");
 
+
 import dotenv from 'dotenv'
+import { getServerSession } from "next-auth";
+import { authConfig } from "../../lib/auth";
 dotenv.config();
 
 
 
 export default async function createDeck() {
+
+  
   return (
     <>
       <Navbar />
@@ -45,6 +49,15 @@ export async function uploadImage(image,index){
   return res.url;
   } catch {
     console.error("gyat")
+  }
+}
+
+export async function checkUser(){
+  const session = await getServerSession(authConfig)
+  if(session){
+    return true;
+  } else {
+    return false;
   }
 }
 
