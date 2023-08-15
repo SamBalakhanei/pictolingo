@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 
 export function GoogleSignInButton() {
   const handleClick = () => {
-    signIn("google", { callbackUrl: "http://localhost:3000/" });
+    signIn("google", { callbackUrl: "http://pictolingo.vercel.app" });
   };
 
   return (
