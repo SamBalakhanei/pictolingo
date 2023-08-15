@@ -35,3 +35,8 @@ export async function getOneDeck(deckId){
   const deck = await allDecks.find({ 'deck.id': deckId })
   return deck;
 }
+
+export async function deleteDeck(deckId){
+  await allDecks.deleteOne({ 'deck.id': deckId});
+  return "Deck successfully removed";
+}

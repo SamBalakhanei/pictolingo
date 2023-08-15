@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Link from "next/link";
 import { authConfig } from "../lib/auth";
 import { getServerSession } from "next-auth";
-import { getUserName } from "./api/auth/[...nextauth]/route";
 
 export default async function HomePage() {
   const session = await getServerSession(authConfig);
@@ -14,7 +13,7 @@ export default async function HomePage() {
       <Navbar />
       <div className="w-full flex flex-col items-center mt-20 min-h-screen py-2">
         <div className="flex flex-col items-center mt-10 p-10 shadow-lg bg-slate-400">
-          <h3>Hello {userName}! Click Learn at the top right to see your decks!</h3>
+          <h3>Hello {userName}! Click Learn at the top right to view your decks!</h3>
         </div>
       </div>
     </>

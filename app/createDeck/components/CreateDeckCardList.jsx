@@ -2,16 +2,20 @@
 import { useState } from "react";
 import { getLanguage } from "./LanguageBar";
 import { v4 } from "uuid";
-import { uploadImage, getUserEmail } from "../page";
+import { uploadImage, getUserEmail } from "../../api/ServerCalls";
 import { insertDeck } from "/app/api/MongooseActions";
 
 
 
 export let [cards, setCards] = "";
+export let [loadingState, setLoadingState] = "";
 
 export default function CardList() {
   
   [cards, setCards] = useState([{ img1: null, img2: null }]);
+  [loadingState, setLoadingState] = useState("Create New Deck");
+  
+  
 
 
   function deleteCard(index) {
@@ -72,13 +76,14 @@ export default function CardList() {
       <br></br>
       <input
         type="submit"
-        value="Create New Deck"
+        value={loadingState}
         className="w3-btn w3-black w3-opacity-min w3-margin-top w3-right-align"
         onClick={handleSubmitDeck}
       ></input>
     </>
   );
 }
+
 
 
 
@@ -99,6 +104,7 @@ function handleSubmitDeck(e) {
 
   getUserEmail().then((res) => {
     deck.user = res;
+    setLoadingState("Creating deck...");
     compileSubmitDeck(deck)
   })
   
@@ -145,8 +151,8 @@ function compileSubmitDeck(deck) {
   //  create a promise chain
   async function chainPromises() {
     await Promise.all(promises); // Wait for all the image uploading promises to complete
-    console.log(deck)
     insertDeck(deck);
+    setLoadingState("Deck successfully created!");
   }
 
   // Call the function to start the promise chain

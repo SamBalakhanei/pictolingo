@@ -45,20 +45,20 @@ export default async function createDeck() {
 
 
 
-export async function uploadImage(image,index){
-  try{
-    const res = await imgbbUploader({
-    apiKey: process.env.IMGBB_API_KEY,
-    name: "image1-"+index+v4(),
-    base64string: image
-  })
-  return res.url;
-  } catch {
-    console.error("gyat")
-  }
-}
+// export async function uploadImage(image,index){
+//   try{
+//     const res = await imgbbUploader({
+//     apiKey: process.env.IMGBB_API_KEY,
+//     name: "image1-"+index+v4(),
+//     base64string: image
+//   })
+//   return res.url;
+//   } catch {
+//     console.error("gyat")
+//   }
+// }
 
-export async function getUserEmail(){
-  const session = await getServerSession(authConfig);
-  return session?.user?.email;
-}
+// export async function getUserEmail(){
+//   const session = await getServerSession(authConfig);
+//   return session?.user?.email;
+// }
