@@ -21,7 +21,7 @@ export default async function Navbar() {
             <Link href='/learn' className="w3-bar-item w3-button">Learn</Link>
             {/* <Link href='/' className="w3-bar-item w3-button">Study</Link>
             <Link href='/' className="w3-bar-item w3-button">Test</Link> */}
-            <Link href='/api/auth/signout' className="w3-bar-item w3-button ring-2 ring-offset-blue-300">Sign Out</Link>
+            <Link href='/signout' className="w3-bar-item w3-button ring-2 ring-offset-blue-300">Sign Out</Link>
             </div>
           </div>
         </div>
