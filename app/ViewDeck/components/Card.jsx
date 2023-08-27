@@ -23,12 +23,12 @@ export default function Card(deck) {
 
   function flipCard() {
     if (!flipped) {
-      setImage(deck.cards[index].img2);
-      setAlt("img2");
+      setImage(deck.cards[index].img2); //sets card to text (back)
+      setAlt(`text${index}`);
       setFlipped(true);
     } else {
       setFlipped(false);
-      setImage(deck.cards[index].img1);
+      setImage(deck.cards[index].img1); //sets card to the image (front)
       setAlt("img1");
     }
   }
@@ -72,76 +72,155 @@ export default function Card(deck) {
   }
 
   if (viewResults === false) {
-    return (
-      <div
-        style={{
-          border: "2px solid #000",
-          borderRadius: "8px",
-          padding: "20px",
-          width: "600px",
-          height: "700px",
-          flexDirection: "column",
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
-        <Image
-          src={image}
-          alt={alt}
-          width={550}
-          height={550}
-          onClick={flipCard}
-          className="w3-btn"
-          style={{
-            objectFit: "contain",
-            padding: "50px",
-          }}
-        />
-
+    if (!flipped) {
+      return (
         <div
           style={{
-            padding: "10px",
-            textAlign: "center",
-            display: "flex",
+            border: "2px solid #000",
+            borderRadius: "8px",
+            padding: "20px",
+            width: "600px",
+            height: "700px",
+            flexDirection: "column",
             justifyContent: "center",
-            marginTop: "auto",
+            display: "flex",
           }}
         >
-          <button
-            className="w3-button w3-red w3-hover-red w3-hover-opacity"
-            onClick={answerWrong}
+          <Image
+            src={image}
+            alt={alt}
+            width={550}
+            height={550}
+            onClick={flipCard}
+            className="w3-btn"
             style={{
-              flexGrow: "1",
-              margin: "0 5px",
+              objectFit: "contain",
+              padding: "50px",
             }}
-          >
-            X
-          </button>
+          />
 
-          <button
-            className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
-            onClick={skipCard}
+          <div
             style={{
-              flexGrow: "1",
-              margin: "0 5px",
+              padding: "10px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "auto",
             }}
           >
-            {" "}
-            {">>"}{" "}
-          </button>
-          <button
-            className="w3-button w3-green w3-hover-green w3-hover-opacity"
-            onClick={answerCorrect}
-            style={{
-              flexGrow: "1",
-              margin: "0 5px",
-            }}
-          >
-            ./
-          </button>
+            <button
+              className="w3-button w3-red w3-hover-red w3-hover-opacity"
+              onClick={answerWrong}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              X
+            </button>
+
+            <button
+              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
+              onClick={skipCard}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              {" "}
+              {">>"}{" "}
+            </button>
+            <button
+              className="w3-button w3-green w3-hover-green w3-hover-opacity"
+              onClick={answerCorrect}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              ./
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div
+          style={{
+            border: "2px solid #000",
+            borderRadius: "8px",
+            padding: "20px",
+            width: "600px",
+            height: "700px",
+            flexDirection: "column",
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <div
+            onClick={flipCard}
+            className="w3-btn"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "1px solid #ccc",
+              borderRadius: "10px",
+              padding: "50px",
+              height: "550px",
+              width: "550px",
+            }}
+          >
+            <div style={{ fontSize: "50px", wordWrap: "break-word" }}>
+              {image}
+            </div>
+          </div>
+
+          <div
+            style={{
+              padding: "10px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "auto",
+            }}
+          >
+            <button
+              className="w3-button w3-red w3-hover-red w3-hover-opacity"
+              onClick={answerWrong}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              X
+            </button>
+
+            <button
+              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
+              onClick={skipCard}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              {" "}
+              {">>"}{" "}
+            </button>
+            <button
+              className="w3-button w3-green w3-hover-green w3-hover-opacity"
+              onClick={answerCorrect}
+              style={{
+                flexGrow: "1",
+                margin: "0 5px",
+              }}
+            >
+              ./
+            </button>
+          </div>
+        </div>
+      );
+    }
   } else {
     return (
       <>
@@ -149,7 +228,14 @@ export default function Card(deck) {
           <h1>Total Correct: {correct.length}</h1>
           <h1>Total Incorrect: {wrong.length}</h1>
           <h1>Final Score: {(correct.length / total) * 100}%</h1>
-          {/* <Link className='w3-button' href={`/ViewDeck/${deck.id}/incorrect`}>View Incorrect</Link> */}
+          <div className="w3-bar">
+            <a className="w3-button w-2/4 w3-black" href={`/learn`}>
+              Back to Learn
+            </a>
+            <a className="w3-button w-2/4 w3-grey" href={`/ViewDeck/${deck.id}/`}>
+              Retry
+            </a>
+          </div>
         </div>
       </>
     );

@@ -9,6 +9,7 @@ import Link from "next/link";
 export default function DeckGrid({ currentLanguage }) {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -22,11 +23,13 @@ export default function DeckGrid({ currentLanguage }) {
           .catch((error) => {
             console.error(error);
             setLoading(false);
+            setIsError(true);
           });
       })
       .catch((error) => {
         console.error(error);
         setLoading(false);
+        setIsError(true);
       });
   }, [currentLanguage]);
 
@@ -43,13 +46,14 @@ export default function DeckGrid({ currentLanguage }) {
   };
 
   if (isLoading) return <h2>Loading...</h2>;
-  if (data.length === 0) return <h1>No decks available</h1>;
+  if (isError) return <h1>Error retrieving decks</h1>
+  if (data.length === 0) return <h1>You haven't created any decks yet!</h1>;
 
   return (
     <>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       {data.map((deck) => (
-        <div style={{ position: "relative" }}>
+        <div key={deck.deck.id} style={{ position: "relative" }}>
           <Link
             key={deck.deck.id}
             href={`/ViewDeck/${deck.deck.id}`}
