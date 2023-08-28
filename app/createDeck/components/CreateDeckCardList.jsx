@@ -127,8 +127,10 @@ function compileSubmitDeck(deck) {
       });
 
       promises.push(promise);
-
-      card.img2 = text; //must figure out flip image logic now with text
+      card.img2 = text;
+      if(card.img2 == null || card.img1 === null){
+        setLoadingState("Do not leave any fields empty!")
+      }
 
     } else {
       return;
@@ -138,6 +140,8 @@ function compileSubmitDeck(deck) {
   //  create a promise chain
   async function chainPromises() {
     await Promise.all(promises); // Wait for all the image uploading promises to complete
+
+    if(loadingState == "Do not leave any fields empty!") return;
     insertDeck(deck);
     setLoadingState("Deck successfully created!");
   }
