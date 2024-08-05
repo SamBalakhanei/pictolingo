@@ -12,13 +12,13 @@ export default async function HomePage() {
       <>
         <Navbar />
         <div className="w-full flex flex-col items-center mt-20 min-h-screen py-2">
-          <div className="flex flex-col items-center mt-10 p-10 shadow-lg bg-slate-400">
+          <div className="flex flex-col items-center mt-10 p-10 shadow-lg text-white bg-blue-900">
             <h3>
-              Hello {userName}! Click Learn at the top right to view your decks!
+              Hello <span className="text-indigo-300">{userName}</span>! Click Learn at the top right to view your decks!
             </h3>
           </div>
           <div name="about">
-            <div className="max-w-5xl mx-auto p-8 bg-white rounded shadow-lg mt-40">
+            <div className="max-w-5xl mx-auto p-8 bg-indigo-200 rounded shadow-lg mt-40">
               <h1 className="text-3xl font-bold mb-4 text-indigo-600">
                 Welcome to PictoLingo: 🌟 Your Ultimate Picture-Based Learning
                 Platform! 📸
