@@ -56,7 +56,6 @@ export default function CardList() {
               type="text"
               id={`text-${index}`}
               name={`text-${index}`}
-              // accept=".jpg, .jpeg, .png"
               required
               className="rounded-sm w3-border border-black max-w-sm w3-input"
             />
@@ -85,8 +84,23 @@ export default function CardList() {
 
 function handleSubmitDeck(e) {
   e.preventDefault();
+  setLoadingState("Creating deck..."); // Reset loading state to default at the beginning
   const deckName = document.querySelector('input[name="deckName"]').value;
-  if (deckName === "" || cards.length === 0) return;
+  if (deckName === "" || cards.length === 0) {
+    setLoadingState("Do not leave any fields empty!");
+    return;
+  }
+
+  // Validate all cards before proceeding
+  for (let i = 0; i < cards.length; i++) {
+    const imageInput = document.getElementById(`image1-${i}`);
+    const textInput = document.getElementById(`text-${i}`).value;
+
+    if (!imageInput.files.length || !textInput) {
+      setLoadingState("Do not leave any fields empty!");
+      return;
+    }
+  }
 
   let deck = {
     id: v4(),
@@ -98,7 +112,6 @@ function handleSubmitDeck(e) {
 
   getUserEmail().then((res) => {
     deck.user = res;
-    setLoadingState("Creating deck...");
     compileSubmitDeck(deck);
   });
 }
@@ -128,20 +141,15 @@ function compileSubmitDeck(deck) {
 
       promises.push(promise);
       card.img2 = text;
-      if(card.img2 == null || card.img1 == null){
-        setLoadingState("Do not leave any fields empty!")
-      }
-
-    } else {
-      return;
     }
   });
 
-  //  create a promise chain
+  // Create a promise chain
   async function chainPromises() {
     await Promise.all(promises); // Wait for all the image uploading promises to complete
 
-    if(loadingState == "Do not leave any fields empty!") return;
+    if (loadingState === "Do not leave any fields empty!") return;
+    setLoadingState("Creating deck...");
     insertDeck(deck);
     setLoadingState("Deck successfully created!");
   }
