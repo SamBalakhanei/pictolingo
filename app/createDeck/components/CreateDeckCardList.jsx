@@ -128,7 +128,7 @@ function compileSubmitDeck(deck) {
 
       promises.push(promise);
       card.img2 = text;
-      if(card.img2 == null || card.img1 === null){
+      if(card.img2 == null || card.img1 == null){
         setLoadingState("Do not leave any fields empty!")
       }
 
