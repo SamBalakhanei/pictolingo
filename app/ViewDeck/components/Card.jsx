@@ -42,6 +42,7 @@ export default function Card(deck) {
     deck.cards.push(deck.cards[index]);
     deck.cards.splice(index, 1);
     setImage(deck.cards[index].img1);
+    setFlipped(false); // Reset flipped state when skipping to the next card
   }
 
   function answerCorrect() {
@@ -68,6 +69,7 @@ export default function Card(deck) {
     } else {
       setIndex(index + 1);
       setImage(deck.cards[index + 1].img1);
+      setFlipped(false); // Reset flipped state when moving to the next card
     }
   }
 
@@ -116,21 +118,18 @@ export default function Card(deck) {
     );
   } else {
     return (
-      <div className="text-center mt-8">
-        <h1 className="text-2xl font-bold text-black">Total Correct: {correct.length}</h1>
-        <h1 className="text-2xl font-bold text-black">Total Incorrect: {wrong.length}</h1>
-        <h1 className="text-2xl font-bold text-black">Final Score: {(correct.length / total) * 100}%</h1>
-        <div className="flex justify-center mt-4 space-x-4">
-          <Link href={`/learn`} passHref>
-            <button className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out">
+      <div className="flex flex-col items-center justify-center h-screen text-center">
+        <h1 className="text-4xl font-bold text-black mb-4">Results</h1>
+        <p className="text-2xl text-black mb-2">Total Correct: {correct.length}</p>
+        <p className="text-2xl text-black mb-2">Total Incorrect: {wrong.length}</p>
+        <p className="text-2xl text-black mb-4">Final Score: {(correct.length / total) * 100}%</p>
+        <div className="flex space-x-4">
+            <a className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-400 transition duration-300 ease-in-out" href="/learn">
               Back to Learn
-            </button>
-          </Link>
-          <Link href={`/ViewDeck/${deck.id}/`} passHref>
-            <button className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out">
+            </a>
+            <a className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out" href={`/ViewDeck/${deck.id}`}>
               Retry
-            </button>
-          </Link>
+            </a>
         </div>
       </div>
     );

@@ -5,6 +5,8 @@ import { authConfig } from "../../lib/auth";
 export default async function Navbar() {
   const session = await getServerSession(authConfig);
 
+
+
   return (
     <div className="w-full fixed top-0 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 shadow-lg z-50">
       <div className="max-w-auto mx-auto px-4 sm:px-6 lg:px-8">

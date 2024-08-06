@@ -17,7 +17,7 @@ export default function LanguageBar() {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-6 rounded-lg shadow-lg">
+      <div className="mt-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-6 rounded-lg shadow-lg">
         <h3 className="text-2xl font-bold text-white mb-4">
           Select Language
         </h3>
