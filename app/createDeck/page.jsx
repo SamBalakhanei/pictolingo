@@ -28,7 +28,7 @@ export default async function createDeck() {
             <input
               type="text"
               name="deckName"
-              className="border-blue-600 border-4 rounded py-2 px-4 mb-4 w-full max-w-lg"
+              className="border-blue-600 border-4 rounded py-2 px-4 mb-4 w-full max-w-lg text-black"
               placeholder="Deck Name"
               required
             />

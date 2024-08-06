@@ -2,16 +2,18 @@
 import { useState } from "react";
 import { getLanguage } from "./LanguageBar";
 import { v4 } from "uuid";
-import { uploadImage, getUserEmail } from "../../api/ServerCalls";
+import { uploadImage, getUserEmail} from "../../api/ServerCalls";
 import { insertDeck } from "/app/api/MongooseActions";
-import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 export let [cards, setCards] = "";
 export let [loadingState, setLoadingState] = "";
+export let router = null;
 
 export default function CardList() {
   [cards, setCards] = useState([{ img1: null, img2: null }]);
   [loadingState, setLoadingState] = useState("Create New Deck");
+  router = useRouter();
 
   function deleteCard(index) {
     const updatedCards = [...cards];
@@ -150,6 +152,9 @@ function compileSubmitDeck(deck) {
     setLoadingState("Creating deck...");
     insertDeck(deck);
     setLoadingState("Deck successfully created!");
+    router.push('/learn');
+ 
+
   }
 
   // Call the function to start the promise chain
