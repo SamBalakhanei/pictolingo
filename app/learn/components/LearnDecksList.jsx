@@ -4,20 +4,6 @@ export default function LearnDecks({ currentLanguage }) {
 
   return (
     <>
-      <h2 className="w3-center w3-round-xxlarge w3-padding-16">
-        <span
-          style={{
-            display: "inline-block",
-            padding: "12px 16px",
-            borderRadius: "8px",
-            color: "white",
-            backgroundColor: "#395c8a",
-            position: "static",
-          }}
-        >
-          {currentLanguage} Decks
-        </span>
-      </h2>
       <div
         style={{
           display: "grid",
