@@ -21,7 +21,7 @@ export default async function createDeck() {
   return (
     <>
       <Navbar />
-      <div className="w-full pt-20 px-8">
+      <div className="w-full pt-20 px-8 pb-24">
         <LanguageBar />
         <form className="mt-8">
           <div className="flex flex-col items-center">

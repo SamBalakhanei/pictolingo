@@ -15,7 +15,7 @@ export default async function LearnPage() {
   return (
     <>
       <Navbar />
-      <div className="max-w-full pt-20 px-8">
+      <div className="max-w-full pt-20 px-8 pb-24">
         <LanguageBar />
         <div className="flex justify-center mt-8">
           <Link href='/createDeck' className='text-white bg-indigo-600 border border-indigo-600 rounded-full px-6 py-3 hover:bg-indigo-500 hover:text-gray-100 transition duration-300 ease-in-out'>

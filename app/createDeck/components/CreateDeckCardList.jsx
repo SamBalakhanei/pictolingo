@@ -38,8 +38,8 @@ export default function CardList() {
       </button>
       {cards.map((card, index) => (
         <div className="bg-white p-4 rounded-lg shadow-md mb-4" key={index}>
-          <div className="flex items-center space-x-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2 w-full md:w-auto">
               Front Image:
               <input
                 type="file"
@@ -47,17 +47,17 @@ export default function CardList() {
                 name={`image1-${index}`}
                 accept=".jpg, .jpeg, .png"
                 required
-                className="ml-2"
+                className="ml-2 mt-2 md:mt-0"
               />
             </label>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2 w-full md:w-auto">
               Back Text:
               <input
                 type="text"
                 id={`text-${index}`}
                 name={`text-${index}`}
                 required
-                className="rounded border border-gray-300 py-2 px-4 ml-2 w-64"
+                className="rounded border border-gray-300 py-2 px-4 ml-2 mt-2 md:mt-0 md:w-64 w-full"
               />
             </label>
             <button

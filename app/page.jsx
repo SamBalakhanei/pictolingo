@@ -10,7 +10,7 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="w-full flex flex-col items-center min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 pt-20 pb-10">
+      <div className="w-full flex flex-col items-center min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 pt-20 pb-16">
         <div
           className="flex flex-col items-center mt-10 p-10 shadow-lg text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
         >
