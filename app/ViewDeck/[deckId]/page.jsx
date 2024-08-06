@@ -35,7 +35,7 @@ export default function ViewDeck({ params }) {
   if (isLoading) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <h1 className="md:font-bold text-9xl">Loading...</h1>
+        <h1 className="md:font-bold text-5xl text-black">Loading...</h1>
       </div>
     );
   }

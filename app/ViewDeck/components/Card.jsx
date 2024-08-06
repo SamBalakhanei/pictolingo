@@ -23,12 +23,12 @@ export default function Card(deck) {
 
   function flipCard() {
     if (!flipped) {
-      setImage(deck.cards[index].img2); //sets card to text (back)
+      setImage(deck.cards[index].img2); // sets card to text (back)
       setAlt(`text${index}`);
       setFlipped(true);
     } else {
       setFlipped(false);
-      setImage(deck.cards[index].img1); //sets card to the image (front)
+      setImage(deck.cards[index].img1); // sets card to the image (front)
       setAlt("img1");
     }
   }
@@ -96,22 +96,22 @@ export default function Card(deck) {
         )}
         <div className="flex justify-around mt-4 w-full">
           <button
-            className="bg-red-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-400 transition duration-300 ease-in-out"
+            className="flex items-center justify-center bg-red-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-red-400 transition duration-300 ease-in-out border border-black"
             onClick={answerWrong}
           >
-            X
+            <span className="text-xl">✗</span>
           </button>
           <button
-            className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-yellow-400 transition duration-300 ease-in-out"
+            className="flex items-center justify-center bg-gray-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out border border-black"
             onClick={skipCard}
           >
-            {">>"}
+            <span className="text-xl">≫</span>
           </button>
           <button
-            className="bg-green-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-green-400 transition duration-300 ease-in-out"
+            className="flex items-center justify-center bg-green-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-green-400 transition duration-300 ease-in-out border border-black"
             onClick={answerCorrect}
           >
-            ./
+            <span className="text-xl">✔</span>
           </button>
         </div>
       </div>
@@ -124,12 +124,18 @@ export default function Card(deck) {
         <p className="text-2xl text-black mb-2">Total Incorrect: {wrong.length}</p>
         <p className="text-2xl text-black mb-4">Final Score: {(correct.length / total) * 100}%</p>
         <div className="flex space-x-4">
-            <a className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-400 transition duration-300 ease-in-out" href="/learn">
-              Back to Learn
-            </a>
-            <a className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out" href={`/ViewDeck/${deck.id}`}>
-              Retry
-            </a>
+          <a
+            className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-400 transition duration-300 ease-in-out"
+            href="/learn"
+          >
+            Back to Learn
+          </a>
+          <a
+            className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out"
+            href={`/ViewDeck/${deck.id}`}
+          >
+            Retry
+          </a>
         </div>
       </div>
     );
