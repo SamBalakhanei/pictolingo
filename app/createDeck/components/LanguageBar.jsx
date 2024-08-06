@@ -26,7 +26,7 @@ export default function LanguageBar() {
             <button
               key={lang}
               onClick={() => setCurrentLanguage(lang)}
-              className={`px-6 py-2 rounded-full font-semibold transition duration-300 ease-in-out ${
+              className={`px-6 py-2 rounded-full font-semibold transition duration-300 ease-in-out max-[640px]:my-2 ${
                 lang === currentLanguage
                   ? 'bg-yellow-400 text-gray-900'
                   : 'bg-gray-800 text-white hover:bg-gray-700'
