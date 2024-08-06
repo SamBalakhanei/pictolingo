@@ -15,9 +15,13 @@ export default async function LearnPage() {
   return (
     <>
       <Navbar />
-      <div className="max-w-full pt-20">
+      <div className="max-w-full pt-20 px-8">
         <LanguageBar />
-        <Link className='text-white border border-white rounded px-4 py-2 hover:bg-indigo-300 hover:text-gray-700' href='/createDeck'>Create New Deck</Link>
+        <div className="flex justify-center mt-8">
+          <Link href='/createDeck' className='text-white bg-indigo-600 border border-indigo-600 rounded-full px-6 py-3 hover:bg-indigo-500 hover:text-gray-100 transition duration-300 ease-in-out'>
+            Create New Deck
+          </Link>
+        </div>
       </div>
     </>
   );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link.js";
+import Link from "next/link";
 
 export default function Card(deck) {
   try {
@@ -71,173 +71,68 @@ export default function Card(deck) {
     }
   }
 
-  if (viewResults === false) {
-    if (!flipped) {
-      return (
-        <div
-          style={{
-            border: "2px solid #000",
-            borderRadius: "8px",
-            padding: "20px",
-            width: "600px",
-            height: "700px",
-            flexDirection: "column",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
+  if (!viewResults) {
+    return (
+      <div className="border-2 border-gray-800 rounded-lg p-6 w-full max-w-lg flex flex-col justify-center items-center bg-white shadow-lg">
+        {!flipped ? (
           <Image
             src={image}
             alt={alt}
-            width={550}
-            height={550}
+            width={500}
+            height={500}
             onClick={flipCard}
-            className="w3-btn"
-            style={{
-              objectFit: "contain",
-              padding: "50px",
-            }}
+            className="cursor-pointer rounded-lg"
+            style={{ objectFit: "cover" }}
           />
-
-          <div
-            style={{
-              padding: "10px",
-              textAlign: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "auto",
-            }}
-          >
-            <button
-              className="w3-button w3-red w3-hover-red w3-hover-opacity"
-              onClick={answerWrong}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              X
-            </button>
-
-            <button
-              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
-              onClick={skipCard}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              {" "}
-              {">>"}{" "}
-            </button>
-            <button
-              className="w3-button w3-green w3-hover-green w3-hover-opacity"
-              onClick={answerCorrect}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              ./
-            </button>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div
-          style={{
-            border: "2px solid #000",
-            borderRadius: "8px",
-            padding: "20px",
-            width: "600px",
-            height: "700px",
-            flexDirection: "column",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
+        ) : (
           <div
             onClick={flipCard}
-            className="w3-btn"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "50px",
-              height: "550px",
-              width: "550px",
-            }}
+            className="cursor-pointer flex justify-center items-center border-2 border-gray-300 rounded-lg p-6 w-full h-96 text-2xl text-black"
           >
-            <div style={{ fontSize: "50px", wordWrap: "break-word" }}>
-              {image}
-            </div>
+            <span style={{ wordBreak: "break-word" }}>{image}</span>
           </div>
-
-          <div
-            style={{
-              padding: "10px",
-              textAlign: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "auto",
-            }}
+        )}
+        <div className="flex justify-around mt-4 w-full">
+          <button
+            className="bg-red-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-400 transition duration-300 ease-in-out"
+            onClick={answerWrong}
           >
-            <button
-              className="w3-button w3-red w3-hover-red w3-hover-opacity"
-              onClick={answerWrong}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              X
-            </button>
-
-            <button
-              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
-              onClick={skipCard}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              {" "}
-              {">>"}{" "}
-            </button>
-            <button
-              className="w3-button w3-green w3-hover-green w3-hover-opacity"
-              onClick={answerCorrect}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              ./
-            </button>
-          </div>
+            X
+          </button>
+          <button
+            className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-yellow-400 transition duration-300 ease-in-out"
+            onClick={skipCard}
+          >
+            {">>"}
+          </button>
+          <button
+            className="bg-green-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-green-400 transition duration-300 ease-in-out"
+            onClick={answerCorrect}
+          >
+            ./
+          </button>
         </div>
-      );
-    }
+      </div>
+    );
   } else {
     return (
-      <>
-        <div style={{ marginTop: "10px" }}>
-          <h1>Total Correct: {correct.length}</h1>
-          <h1>Total Incorrect: {wrong.length}</h1>
-          <h1>Final Score: {(correct.length / total) * 100}%</h1>
-          <div className="w3-bar">
-            <a className="w3-button w-2/4 w3-black" href={`/learn`}>
+      <div className="text-center mt-8">
+        <h1 className="text-2xl font-bold text-black">Total Correct: {correct.length}</h1>
+        <h1 className="text-2xl font-bold text-black">Total Incorrect: {wrong.length}</h1>
+        <h1 className="text-2xl font-bold text-black">Final Score: {(correct.length / total) * 100}%</h1>
+        <div className="flex justify-center mt-4 space-x-4">
+          <Link href={`/learn`} passHref>
+            <button className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out">
               Back to Learn
-            </a>
-            <a className="w3-button w-2/4 w3-grey" href={`/ViewDeck/${deck.id}/`}>
+            </button>
+          </Link>
+          <Link href={`/ViewDeck/${deck.id}/`} passHref>
+            <button className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out">
               Retry
-            </a>
-          </div>
+            </button>
+          </Link>
         </div>
-      </>
+      </div>
     );
   }
 }

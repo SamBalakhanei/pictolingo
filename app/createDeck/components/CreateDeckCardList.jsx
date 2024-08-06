@@ -28,57 +28,55 @@ export default function CardList() {
   }
 
   return (
-    <>
-      <br></br>
-      <br></br>
+    <div className="w-full max-w-3xl mx-auto mt-8">
       <button
         type="button"
-        className="w3-btn w3-teal w3-large w3-round w3-margin-bottom"
+        className="bg-teal-500 text-white font-semibold py-2 px-4 rounded-full mb-4 hover:bg-teal-400 transition duration-300 ease-in-out"
         onClick={() => handleAddCard()}
       >
         Add Card
       </button>
       {cards.map((card, index) => (
-        <div className="w3-row-padding" key={index}>
-          <br></br>
-          <div className="flex">
-            <span className="px-3">Front Image: </span>
-            <input
-              type="file"
-              id={`image1-${index}`}
-              name={`image1-${index}`}
-              accept=".jpg, .jpeg, .png"
-              required
-            />
-
-            <span className="px-3">Back Text: </span>
-            <input
-              type="text"
-              id={`text-${index}`}
-              name={`text-${index}`}
-              required
-              className="rounded-sm w3-border border-black max-w-sm w3-input"
-            />
+        <div className="bg-white p-4 rounded-lg shadow-md mb-4" key={index}>
+          <div className="flex items-center space-x-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Front Image:
+              <input
+                type="file"
+                id={`image1-${index}`}
+                name={`image1-${index}`}
+                accept=".jpg, .jpeg, .png"
+                required
+                className="ml-2"
+              />
+            </label>
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Back Text:
+              <input
+                type="text"
+                id={`text-${index}`}
+                name={`text-${index}`}
+                required
+                className="rounded border border-gray-300 py-2 px-4 ml-2 w-64"
+              />
+            </label>
             <button
               type="button"
-              className="bg-red-500 px-4 py-2 hover:bg-red-300 mx-8"
+              className="bg-red-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-400 transition duration-300 ease-in-out"
               onClick={() => deleteCard(index)}
             >
               Delete
             </button>
           </div>
-
-          <br></br>
         </div>
       ))}
-      <br></br>
       <input
         type="submit"
         value={loadingState}
-        className="w3-btn w3-black w3-opacity-min w3-margin-top w3-right-align"
+        className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out mt-4"
         onClick={handleSubmitDeck}
-      ></input>
-    </>
+      />
+    </div>
   );
 }
 

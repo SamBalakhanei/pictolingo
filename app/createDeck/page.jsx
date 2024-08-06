@@ -5,14 +5,11 @@ import CardList from "./components/CreateDeckCardList";
 import { v4 } from "uuid";
 const imgbbUploader = require("imgbb-uploader");
 
-
 import dotenv from 'dotenv'
 import { getServerSession } from "next-auth";
 import { authConfig } from "../../lib/auth";
-import {redirect} from "next/navigation"
+import { redirect } from "next/navigation"
 dotenv.config();
-
-
 
 export default async function createDeck() {
   const session = await getServerSession(authConfig);
@@ -21,44 +18,24 @@ export default async function createDeck() {
     redirect('/login')
   }
 
-  
   return (
     <>
       <Navbar />
-      <div className="w3-content w3-padding" style={{ maxWidth: "1564px" }}>
+      <div className="w-full pt-20 px-8">
         <LanguageBar />
-        <form>
-          <input
-            type="text"
-            name="deckName"
-            className=" border-blue-600 border-4 rounded py-1"
-            placeholder="Deck Name"
-            required
-          />
-          <CardList />
-          <br></br>
+        <form className="mt-8">
+          <div className="flex flex-col items-center">
+            <input
+              type="text"
+              name="deckName"
+              className="border-blue-600 border-4 rounded py-2 px-4 mb-4 w-full max-w-lg"
+              placeholder="Deck Name"
+              required
+            />
+            <CardList />
+          </div>
         </form>
       </div>
     </>
   );
 }
-
-
-
-// export async function uploadImage(image,index){
-//   try{
-//     const res = await imgbbUploader({
-//     apiKey: process.env.IMGBB_API_KEY,
-//     name: "image1-"+index+v4(),
-//     base64string: image
-//   })
-//   return res.url;
-//   } catch {
-//     console.error("gyat")
-//   }
-// }
-
-// export async function getUserEmail(){
-//   const session = await getServerSession(authConfig);
-//   return session?.user?.email;
-// }

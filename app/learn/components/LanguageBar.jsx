@@ -15,7 +15,7 @@ export default function LanguageBar() {
 
   return (
     <>
-      <div className="w-full p-8 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 shadow-lg rounded-lg">
+      <div className="w-full p-8 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 shadow-lg rounded-lg mt-5">
         <h3 className="text-2xl font-bold mb-6 text-white">Select Language</h3>
         <div className="flex flex-wrap justify-center gap-4">
           {languages.map((lang) => (
