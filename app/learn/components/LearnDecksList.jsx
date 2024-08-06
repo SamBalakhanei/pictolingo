@@ -11,6 +11,7 @@ export default function LearnDecks({ currentLanguage }) {
           gridGap: "10px",
           paddingBottom: "10px",
         }}
+        className="justify-center"
       >
         <DeckGrid currentLanguage={currentLanguage}/> 
       </div>

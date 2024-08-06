@@ -37,9 +37,9 @@ export default async function HomePage() {
         <div className="w-full max-w-4xl space-y-8 mt-12">
           <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              Welcome to PictoLingo: <span className="animate-bounce inline-block">🌟</span>{" "}
+              Welcome to PictoLingo: 
               Your Ultimate Picture-Based Learning Platform!{" "}
-              <span className="animate-spin inline-block">📸</span>
+              <span className="inline-block">📸</span>
             </h2>
             <p className="text-lg text-gray-800 mt-4">
               Are you tired of traditional flashcards and boring study methods?
@@ -50,9 +50,9 @@ export default async function HomePage() {
           </div>
 
           <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
-            <h2 className="text-3xl font-bold text-indigo-700">
-              🤔 What is PictoLingo?
-            </h2>
+          <h2 className="text-3xl font-bold text-indigo-700">
+  <span className="rotate-emoji">🤔</span> What is PictoLingo?
+</h2>
             <p className="text-lg text-gray-800 mt-4">
               PictoLingo is a cutting-edge online platform designed to enhance
               your learning through images. It's the perfect blend of technology
@@ -66,7 +66,7 @@ export default async function HomePage() {
 
           <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              🌟 Why Choose PictoLingo?
+            <span className="animate-bounce inline-block">🌟</span>{" "} Why Choose PictoLingo?
             </h2>
             <ul className="list-disc list-inside text-lg text-gray-800 mt-4">
               <li className="mb-2">
@@ -92,9 +92,10 @@ export default async function HomePage() {
           </div>
 
           <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
-            <h2 className="text-3xl font-bold text-indigo-700">
-              🚀 How to Use PictoLingo
-            </h2>
+          <h2 className="text-3xl font-bold text-indigo-700">
+  <span className="blink-emoji">👀</span>
+  How to Use PictoLingo
+</h2>
             <ol className="list-decimal list-inside text-lg text-gray-800 mt-4 pl-4">
               <li className="mb-2">
                 Log In: Simply log in to access your cards and get started.
