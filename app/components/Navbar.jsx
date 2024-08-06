@@ -18,7 +18,7 @@ export default async function Navbar() {
           </div>
           <div className="flex-grow"></div>
           <div className="flex space-x-4">
-            <Link href='/learn' className="text-xl text-white hover:text-yellow-300 transition duration-300 ease-in-out">
+            <Link href='/learn' className="text-xl text-white hover:text-yellow-300 transition duration-300 ease-in-out mr-6">
               Learn
             </Link>
             {session ? (

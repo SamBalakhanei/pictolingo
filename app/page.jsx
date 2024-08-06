@@ -10,7 +10,7 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="w-full flex flex-col items-center mt-20 min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+      <div className="w-full flex flex-col items-center min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 pt-20 pb-10">
         <div
           className="flex flex-col items-center mt-10 p-10 shadow-lg text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
         >
@@ -18,7 +18,6 @@ export default async function HomePage() {
             <h3 className="text-2xl font-bold text-center">
               Hello <span className="text-indigo-200">{userName}</span>! Click
               <Link href="/learn" className="text-yellow-300 hover:text-yellow-100"> Learn </Link>
-
                to view your decks!
             </h3>
           ) : (
@@ -35,28 +34,26 @@ export default async function HomePage() {
           )}
         </div>
 
-        <div name="about">
-          <div className="max-w-5xl mx-auto p-8 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-xl mt-40 transform">
-            <h1 className="text-4xl font-extrabold mb-4 text-indigo-700">
-              Welcome to PictoLingo: <span className="animate-bounce">🌟</span>{" "}
+        <div className="w-full max-w-4xl space-y-8 mt-12">
+          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
+            <h2 className="text-3xl font-bold text-indigo-700">
+              Welcome to PictoLingo: <span className="animate-bounce inline-block">🌟</span>{" "}
               Your Ultimate Picture-Based Learning Platform!{" "}
-              <span className="animate-spin">📸</span>
-            </h1>
-
-            <p className="text-lg text-gray-800 mb-6">
+              <span className="animate-spin inline-block">📸</span>
+            </h2>
+            <p className="text-lg text-gray-800 mt-4">
               Are you tired of traditional flashcards and boring study methods?
               Look no further! PictoLingo is here to revolutionize your learning
               experience. Say goodbye to dull text-based quizzes and say hello
               to a visually engaging way of studying.
             </p>
+          </div>
 
-            <div className="border-t border-gray-300 my-6"></div>
-
+          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              <span className="animate-pulse">🤔</span> What is PictoLingo?
+              🤔 What is PictoLingo?
             </h2>
-
-            <p className="text-lg text-gray-800 mb-6">
+            <p className="text-lg text-gray-800 mt-4">
               PictoLingo is a cutting-edge online platform designed to enhance
               your learning through images. It's the perfect blend of technology
               and education, allowing you to create personalized decks of cards,
@@ -65,14 +62,13 @@ export default async function HomePage() {
               language enthusiast aiming to master vocabulary, or simply someone
               who loves to learn, PictoLingo is your ideal companion.
             </p>
+          </div>
 
-            <div className="border-t border-gray-300 my-6"></div>
-
+          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              <span className="animate-bounce">🌟</span> Why Choose PictoLingo?
+              🌟 Why Choose PictoLingo?
             </h2>
-
-            <ul className="list-disc list-inside text-lg text-gray-800 mb-6">
+            <ul className="list-disc list-inside text-lg text-gray-800 mt-4">
               <li className="mb-2">
                 Visual Learning at its Best: Research shows that visual aids
                 significantly improve memory retention. PictoLingo harnesses
@@ -93,14 +89,13 @@ export default async function HomePage() {
                 efficient learning and better results in less time.
               </li>
             </ul>
+          </div>
 
-            <div className="border-t border-gray-300 my-6"></div>
-
+          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              <span className="animate-pulse">🚀</span> How to Use PictoLingo
+              🚀 How to Use PictoLingo
             </h2>
-
-            <ol className="list-decimal list-inside text-lg text-gray-800 mb-6 pl-4">
+            <ol className="list-decimal list-inside text-lg text-gray-800 mt-4 pl-4">
               <li className="mb-2">
                 Log In: Simply log in to access your cards and get started.
               </li>
@@ -116,21 +111,19 @@ export default async function HomePage() {
                 flip side, input the relevant information or question.
               </li>
             </ol>
+          </div>
 
-            <div className="border-t border-gray-300 my-6"></div>
-
+          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
-              <span className="animate-bounce">🚀</span> Join the Learning
-              Revolution Today!
+              🚀 Join the Learning Revolution Today!
             </h2>
-
-            <p className="text-lg text-gray-800 mb-6">
+            <p className="text-lg text-gray-800 mt-4">
               Embrace the power of visual learning with PictoLingo. Say goodbye
               to monotonous study sessions and welcome a dynamic, engaging, and
               effective way to learn. Get ready to skyrocket your knowledge and
               skills with PictoLingo by your side. Start creating your first
               deck today and experience the joy of learning through pictures!{" "}
-              <span className="animate-pulse">📚✨</span>
+              📚✨
             </p>
           </div>
         </div>
