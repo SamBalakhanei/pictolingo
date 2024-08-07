@@ -44,9 +44,9 @@ export default function DeckGrid({ currentLanguage }) {
       });
   };
 
-  if (isLoading) return <h2 className="text-center text-white mt-5 text-2xl">Loading...</h2>;
+  if (isLoading) return <h2 className="text-center text-gray-900 mt-5 text-2xl">Loading...</h2>;
   if (isError) return <h1 className="text-center text-red-500 mt-5 text-2x1">Error retrieving decks</h1>
-  if (data.length === 0) return <h1 className="text-center text-white mt-5 text-2xl">You haven't created any decks yet!</h1>;
+  if (data.length === 0) return <h1 className="text-center text-gray-900 mt-5 text-2xl">You haven't created any decks yet!</h1>;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -95,9 +95,9 @@ export default function DeckGrid({ currentLanguage }) {
                   handleDelete(deck.deck.id);
                 }
               }}
-              className="absolute top-4 right-4 bg-red-600 hover:bg-red-500 text-white p-3 rounded-full focus:outline-none"
+              className="absolute top-4 right-4 bg-red-600 hover:bg-red-500 text-white p-1 rounded-full focus:outline-none"
             >
-              <i className="fa fa-trash"></i>
+              🗑️
             </button>
           </motion.div>
         </Link>
