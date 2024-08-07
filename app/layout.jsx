@@ -11,6 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <meta property='og:image' content='public/thumbnail.JPG' />
       <body className={`bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 text-white ${inter.className}`}>
         {children}
       </body>
