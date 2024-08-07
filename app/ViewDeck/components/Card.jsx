@@ -125,13 +125,13 @@ export default function Card(deck) {
         <p className="text-2xl text-black mb-4">Final Score: {(correct.length / total) * 100}%</p>
         <div className="flex space-x-4">
           <a
-            className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-400 transition duration-300 ease-in-out"
+            className="hover:bg-indigo-800 bg-[#4e54c8] text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
             href="/learn"
           >
             Back to Learn
           </a>
           <a
-            className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out"
+            className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out"
             href={`/ViewDeck/${deck.id}`}
           >
             Retry

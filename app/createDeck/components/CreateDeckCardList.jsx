@@ -33,7 +33,7 @@ export default function CardList() {
     <div className="w-full max-w-3xl mx-auto mt-8">
       <button
         type="button"
-        className="bg-teal-500 text-white font-semibold py-2 px-4 rounded-full mb-4 hover:bg-teal-400 transition duration-300 ease-in-out"
+        className="bg-indigo-800 hover:bg-[#4e54c8] text-white font-semibold py-2 px-4 rounded-full mb-4 transition duration-300 ease-in-out"
         onClick={() => handleAddCard()}
       >
         Add Card
@@ -49,7 +49,7 @@ export default function CardList() {
                 name={`image1-${index}`}
                 accept=".jpg, .jpeg, .png"
                 required
-                className="ml-2 mt-2 md:mt-0"
+                className="mt-2 md:mt-0"
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2 w-full md:w-auto">
@@ -59,7 +59,7 @@ export default function CardList() {
                 id={`text-${index}`}
                 name={`text-${index}`}
                 required
-                className="rounded border border-gray-300 py-2 px-4 ml-2 mt-2 md:mt-0 md:w-64 w-full"
+                className="rounded border border-gray-300 py-2 px-4 mt-2 md:mt-0 md:w-64 w-full"
               />
             </label>
             <button
@@ -67,7 +67,7 @@ export default function CardList() {
               className="bg-red-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-red-400 transition duration-300 ease-in-out"
               onClick={() => deleteCard(index)}
             >
-              Delete
+              🗑️
             </button>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function CardList() {
       <input
         type="submit"
         value={loadingState}
-        className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out mt-4"
+        className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out mt-4 cursor-pointer"
         onClick={handleSubmitDeck}
       />
     </div>

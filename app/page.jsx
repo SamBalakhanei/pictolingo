@@ -10,9 +10,9 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="w-full flex flex-col items-center min-h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 pt-20 pb-16">
+      <div className="w-full flex flex-col items-center min-h-screen bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 pt-20 pb-16">
         <div
-          className="flex flex-col items-center mt-10 p-10 shadow-lg text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          className="flex flex-col items-center mt-10 p-10 shadow-lg text-white rounded-lg bg-gradient-to-r from-[#4e54c8] to-[#8f94fb]"
         >
           {session ? (
             <h3 className="text-2xl font-bold text-center">

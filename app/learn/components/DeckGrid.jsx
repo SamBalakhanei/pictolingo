@@ -59,7 +59,7 @@ export default function DeckGrid({ currentLanguage }) {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 0 },
     show: { 
       opacity: 1, 
       y: 0,
@@ -80,7 +80,7 @@ export default function DeckGrid({ currentLanguage }) {
       {data.map((deck) => (
         <Link key={deck.deck.id} href={`/ViewDeck/${deck.deck.id}`} passHref>
           <motion.div 
-            className="relative bg-purple-800 text-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-103"
+            className="relative bg-[#4e54c8] text-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-103"
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
           >
