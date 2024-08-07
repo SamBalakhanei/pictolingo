@@ -2,7 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.login{
-    background-color: #0d1117
+.login {
+  background-color: #0d1117;
 }
+
+@keyframes rotateEmoji {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.rotate-emoji {
+  display: inline-block;
+  animation: rotateEmoji 1.75s infinite;
+}
+
+@keyframes blink {
+  0%,
+  95%,
+  100% {
+    transform: scaleY(1);
+  }
+  97%,
+  98% {
+    transform: scaleY(0.1);
+  }
+}
+
+.blink-emoji {
+  display: inline-block;
+  animation: blink 3.5s infinite;
+}
+
+
+

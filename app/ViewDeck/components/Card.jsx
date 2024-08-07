@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link.js";
+import Link from "next/link";
 
 export default function Card(deck) {
   try {
@@ -23,12 +23,12 @@ export default function Card(deck) {
 
   function flipCard() {
     if (!flipped) {
-      setImage(deck.cards[index].img2); //sets card to text (back)
+      setImage(deck.cards[index].img2); // sets card to text (back)
       setAlt(`text${index}`);
       setFlipped(true);
     } else {
       setFlipped(false);
-      setImage(deck.cards[index].img1); //sets card to the image (front)
+      setImage(deck.cards[index].img1); // sets card to the image (front)
       setAlt("img1");
     }
   }
@@ -42,6 +42,7 @@ export default function Card(deck) {
     deck.cards.push(deck.cards[index]);
     deck.cards.splice(index, 1);
     setImage(deck.cards[index].img1);
+    setFlipped(false); // Reset flipped state when skipping to the next card
   }
 
   function answerCorrect() {
@@ -68,176 +69,75 @@ export default function Card(deck) {
     } else {
       setIndex(index + 1);
       setImage(deck.cards[index + 1].img1);
+      setFlipped(false); // Reset flipped state when moving to the next card
     }
   }
 
-  if (viewResults === false) {
-    if (!flipped) {
-      return (
-        <div
-          style={{
-            border: "2px solid #000",
-            borderRadius: "8px",
-            padding: "20px",
-            width: "600px",
-            height: "700px",
-            flexDirection: "column",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
+  if (!viewResults) {
+    return (
+      <div className="border-2 border-gray-800 rounded-lg p-6 w-full max-w-lg flex flex-col justify-center items-center bg-white shadow-lg">
+        {!flipped ? (
           <Image
             src={image}
             alt={alt}
-            width={550}
-            height={550}
+            width={500}
+            height={500}
             onClick={flipCard}
-            className="w3-btn"
-            style={{
-              objectFit: "contain",
-              padding: "50px",
-            }}
+            className="cursor-pointer rounded-lg"
+            style={{ objectFit: "cover" }}
           />
-
-          <div
-            style={{
-              padding: "10px",
-              textAlign: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "auto",
-            }}
-          >
-            <button
-              className="w3-button w3-red w3-hover-red w3-hover-opacity"
-              onClick={answerWrong}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              X
-            </button>
-
-            <button
-              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
-              onClick={skipCard}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              {" "}
-              {">>"}{" "}
-            </button>
-            <button
-              className="w3-button w3-green w3-hover-green w3-hover-opacity"
-              onClick={answerCorrect}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              ./
-            </button>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div
-          style={{
-            border: "2px solid #000",
-            borderRadius: "8px",
-            padding: "20px",
-            width: "600px",
-            height: "700px",
-            flexDirection: "column",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
+        ) : (
           <div
             onClick={flipCard}
-            className="w3-btn"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "50px",
-              height: "550px",
-              width: "550px",
-            }}
+            className="cursor-pointer flex justify-center items-center border-2 border-gray-300 rounded-lg p-6 w-full h-96 text-2xl text-black"
           >
-            <div style={{ fontSize: "50px", wordWrap: "break-word" }}>
-              {image}
-            </div>
+            <span style={{ wordBreak: "break-word" }}>{image}</span>
           </div>
-
-          <div
-            style={{
-              padding: "10px",
-              textAlign: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "auto",
-            }}
+        )}
+        <div className="flex justify-around mt-4 w-full">
+          <button
+            className="flex items-center justify-center bg-red-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-red-400 transition duration-300 ease-in-out border border-black"
+            onClick={answerWrong}
           >
-            <button
-              className="w3-button w3-red w3-hover-red w3-hover-opacity"
-              onClick={answerWrong}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              X
-            </button>
-
-            <button
-              className="w3-button w3-yellow w3-hover-yellow w3-hover-opacity"
-              onClick={skipCard}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              {" "}
-              {">>"}{" "}
-            </button>
-            <button
-              className="w3-button w3-green w3-hover-green w3-hover-opacity"
-              onClick={answerCorrect}
-              style={{
-                flexGrow: "1",
-                margin: "0 5px",
-              }}
-            >
-              ./
-            </button>
-          </div>
+            <span className="text-xl">✗</span>
+          </button>
+          <button
+            className="flex items-center justify-center bg-gray-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-gray-400 transition duration-300 ease-in-out border border-black"
+            onClick={skipCard}
+          >
+            <span className="text-xl">≫</span>
+          </button>
+          <button
+            className="flex items-center justify-center bg-green-500 text-white font-semibold py-2 px-10 rounded-full hover:bg-green-400 transition duration-300 ease-in-out border border-black"
+            onClick={answerCorrect}
+          >
+            <span className="text-xl">✔</span>
+          </button>
         </div>
-      );
-    }
+      </div>
+    );
   } else {
     return (
-      <>
-        <div style={{ marginTop: "10px" }}>
-          <h1>Total Correct: {correct.length}</h1>
-          <h1>Total Incorrect: {wrong.length}</h1>
-          <h1>Final Score: {(correct.length / total) * 100}%</h1>
-          <div className="w3-bar">
-            <a className="w3-button w-2/4 w3-black" href={`/learn`}>
-              Back to Learn
-            </a>
-            <a className="w3-button w-2/4 w3-grey" href={`/ViewDeck/${deck.id}/`}>
-              Retry
-            </a>
-          </div>
+      <div className="flex flex-col items-center justify-center h-screen text-center">
+        <h1 className="text-4xl font-bold text-black mb-4">Results</h1>
+        <p className="text-2xl text-black mb-2">Total Correct: {correct.length}</p>
+        <p className="text-2xl text-black mb-2">Total Incorrect: {wrong.length}</p>
+        <p className="text-2xl text-black mb-4">Final Score: {(correct.length / total) * 100}%</p>
+        <div className="flex space-x-4">
+          <a
+            className="hover:bg-indigo-800 bg-[#4e54c8] text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+            href="/learn"
+          >
+            Back to Learn
+          </a>
+          <a
+            className="bg-black text-white font-semibold py-2 px-4 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out"
+            href={`/ViewDeck/${deck.id}`}
+          >
+            Retry
+          </a>
         </div>
-      </>
+      </div>
     );
   }
 }

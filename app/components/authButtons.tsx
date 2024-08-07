@@ -11,28 +11,25 @@ export function GoogleSignInButton() {
   return (
     <button
       onClick={handleClick}
-      className="hover:bg-slate-500 w-full flex items-center font-semibold 
-      justify-center h-14 px-6 mt-4 text-xl transition-colors duration-300 bg-white border-2 border-black text-black rounded-lg focus:shadow-outline"
+      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 text-xl transition-colors duration-300 bg-white border-2 border-black text-black rounded-lg shadow-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     >
-      <Image src={googleLogo} alt="Google Logo" width={20} height={20} />
+      <Image src={googleLogo} alt="Google Logo" width={24} height={24} />
       <div className="ml-4">Continue with Google</div>
     </button>
   );
 }
 
-export function SignOutButton(){
+export function SignOutButton() {
   const handleClick = () => {
-    signOut({callbackUrl: "https://pictolingo.vercel.app"})
+    signOut({ callbackUrl: "https://pictolingo.vercel.app" });
   };
 
   return (
     <button
       onClick={handleClick}
-      className="hover:bg-slate-500 w-full flex items-center font-semibold 
-      justify-center h-14 px-6 mt-4 text-xl transition-colors duration-300 bg-white border-2 border-black text-black rounded-lg focus:shadow-outline"
+      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 text-xl transition-colors duration-300 bg-white border-2 border-black text-black rounded-lg shadow-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     >
-      <div className="ml-4">Sign out</div>
+      <div className="ml-4">Sign Out</div>
     </button>
-  )
-
+  );
 }

@@ -1,6 +1,7 @@
 'use server'
 import { getServerSession } from "next-auth";
 import { authConfig } from "../../lib/auth";
+import { redirect } from "next/navigation";
 import { v4 } from 'uuid';
 import dotenv from 'dotenv'
 dotenv.config();
@@ -25,4 +26,9 @@ export async function uploadImage(image: String,index: number){
     const session = await getServerSession(authConfig);
     return session?.user?.email;
   }
+
+
+
+
+
   
