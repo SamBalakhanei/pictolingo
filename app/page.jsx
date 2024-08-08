@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { authConfig } from "../lib/auth";
-import Navbar from "./components/Navbar";
 import FlippingImageCard from "./components/FlippingImageCard"; // import the new client component
+import Navbar from "./components/Navbar";
 
 export default async function HomePage() {
   const session = await getServerSession(authConfig);
@@ -10,7 +10,7 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="w-full flex flex-col items-center min-h-screen bg-white pt-24 pb-16">
+      <div className="w-full flex flex-col items-center min-h-screen bg-[#f6efff] pt-24 pb-16">
         <div className="flex max-[600px]:flex-col flex-row items-center max-w-6xl w-full px-4 text-center">
           <div className="mr-4">
             <h1 className="min-[640px]:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 pb-1">
@@ -40,7 +40,8 @@ export default async function HomePage() {
         </div>
 
         <div className="w-full max-w-4xl space-y-8 mt-12 px-4">
-          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
+
+          <div className="sticky z-[2] top-32 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
               <span className="rotate-emoji">🤔</span> What is PictoLingo?
             </h2>
@@ -54,7 +55,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
+          <div className="sticky z-[2] top-32 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
             <h2 className="text-3xl font-bold text-indigo-700">
               <span className="blink-emoji">👀</span> How to Use It
             </h2>
@@ -74,6 +75,36 @@ export default async function HomePage() {
                 flip side, input the relevant information or question.
               </li>
             </ol>
+          </div>
+
+
+          <div className="sticky z-[2] top-32 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
+            <h2 className="text-3xl font-bold text-indigo-700">
+              <span className="rotate-emoji">🤔</span> Our Mission
+            </h2>
+            <p className="text-lg text-gray-800 mt-4">
+              PictoLingo is the perfect blend of technology and education,
+              allowing you to create personalized decks of cards, each featuring
+              a picture on one side and relevant content on the other. Whether
+              you're a student looking to ace your exams, a language enthusiast
+              aiming to master vocabulary, or simply someone who loves to learn,
+              PictoLingo is your ideal companion.
+            </p>
+          </div>
+
+
+          <div className="sticky z-[2] top-32 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105">
+            <h2 className="text-3xl font-bold text-indigo-700">
+              <span className="rotate-emoji">🤔</span> What is PictoLingo?
+            </h2>
+            <p className="text-lg text-gray-800 mt-4">
+              PictoLingo is the perfect blend of technology and education,
+              allowing you to create personalized decks of cards, each featuring
+              a picture on one side and relevant content on the other. Whether
+              you're a student looking to ace your exams, a language enthusiast
+              aiming to master vocabulary, or simply someone who loves to learn,
+              PictoLingo is your ideal companion.
+            </p>
           </div>
         </div>
       </div>
